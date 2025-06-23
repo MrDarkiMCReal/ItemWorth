@@ -1,0 +1,25 @@
+checks:
+  material: true
+  enchants: true
+  by-key: true
+  attributes: true
+material-worth:
+  STONE: 10
+  DIAMOND_SWORD: 50
+  COBBLESTONE: 5
+enchants-worth:
+  protection:
+    buy: 60
+    sell: 20
+  sharpness:
+    buy: 60
+    sell: 20
+by-key-worth: #для твоих шмоток у которых есть namespaceKey
+  custom-traps:
+    buy: 6000
+    sell: 200
+  desorient:
+    buy: 60
+    sell: 20
+attributes: #для сфер или других кастомных шмоток
+  generic-max-health: 100

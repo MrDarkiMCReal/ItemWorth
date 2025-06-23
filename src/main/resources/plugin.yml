@@ -1,0 +1,9 @@
+name: ItemWorth
+version: '${project.version}'
+main: org.mrdarkimc.itemworth.ItemWorth
+api-version: '1.19'
+depend:
+  - ProtocolLib
+commands:
+  worth:
+    description: /worth usage
