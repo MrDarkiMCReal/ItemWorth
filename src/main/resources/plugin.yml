@@ -7,3 +7,5 @@ depend:
 commands:
   worth:
     description: /worth usage
+  setprice:
+    description: /worth usage

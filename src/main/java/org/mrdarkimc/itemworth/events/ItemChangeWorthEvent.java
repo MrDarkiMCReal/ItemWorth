@@ -4,6 +4,9 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemChangeWorthEvent extends Event {
 
     private int slotID;

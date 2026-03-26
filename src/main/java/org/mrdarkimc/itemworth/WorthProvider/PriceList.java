@@ -85,4 +85,13 @@ public class PriceList {
     public static Priceable getPriceFor(String name){
         return map.getOrDefault(name, empty);
     }
+
+    public static Map<String, ? extends Priceable> getPriceables() {
+        return map;
+    }
+
+    public static void setProvider(Map<String,Priceable> priceableMap){
+        //todo refactor поменять на разные типы провайдеров(разные классы)
+        map = priceableMap;
+    }
 }
