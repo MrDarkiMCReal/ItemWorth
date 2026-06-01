@@ -3,10 +3,5 @@ org\mrdarkimc\itemworth\WorthProvider\PriceChecker$PriceType.class
 org\mrdarkimc\itemworth\WorthProvider\PriceChecker$Info.class
 org\mrdarkimc\itemworth\WorthProvider\Priceable.class
 org\mrdarkimc\itemworth\WorthProvider\PriceChecker.class
-org\mrdarkimc\itemworth\Handler.class
-org\mrdarkimc\itemworth\PacketProvider\PacketProvider.class
-org\mrdarkimc\itemworth\events\ItemChangeWorthEvent.class
 org\mrdarkimc\itemworth\SetPriceCmd.class
 org\mrdarkimc\itemworth\WorthProvider\PriceList.class
-org\mrdarkimc\itemworth\itemtooltip\ItemChangeAmmountListener.class
-org\mrdarkimc\itemworth\WorthProvider\WorthProdiver.class
