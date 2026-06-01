@@ -4,94 +4,81 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PriceList {
-    private static final Priceable empty = new Priceable("empty",0,0);
-    private static Map<String,Priceable> map = new HashMap<>();
-    static {
-        map.put("diamond",new Priceable(50,20));
-        map.put("netherite",new Priceable(50,20));
-        map.put("gold_ingot",new Priceable(50,20));
-        map.put("iron_ingot",new Priceable(50,20));
-        map.put("copper_ingot",new Priceable(50,20));
-        map.put("amethyst_shard",new Priceable(50,20));
-        map.put("lapis_lazuli",new Priceable(50,20));
-        map.put("emerald",new Priceable(50,20));
-        map.put("elytra",new Priceable(50,20000));
+    private static final Priceable empty = new Priceable("empty", 0, 0);
+    private static Map<String, Priceable> prices = new HashMap<>();
 
-        map.put("diamond_helmet",new Priceable(500,100));
-        map.put("diamond_chestplate",new Priceable(500,100));
-        map.put("diamond_leggings",new Priceable(500,100));
-        map.put("diamond_boots",new Priceable(500,100));
-        map.put("netherite_helmet",new Priceable(500,100));
-        map.put("netherite_chestplate",new Priceable(500,100));
-        map.put("netherite_leggings",new Priceable(500,100));
-        map.put("netherite_boots",new Priceable(500,100));
-        map.put("snout_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("BOLT_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("COAST_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("DUNE_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("EYE_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("FLOW_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("HOST_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("RAISER_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("RIB_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("SENTRY_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("SHAPER_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("SILENCE_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("SPIRE_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("TIDE_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("VEX_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("WARD_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("WAYFINDER_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-        map.put("WILD_armor_trim_smithing_template".toLowerCase(),new Priceable(500,500));
-
-        map.put("BREACH".toLowerCase(),new Priceable(500,100));
-        map.put("CHANNELING".toLowerCase(),new Priceable(500,100));
-        map.put("DENSITY".toLowerCase(),new Priceable(500,100));
-        map.put("DEPTH_STRIDER".toLowerCase(),new Priceable(500,100));
-        map.put("EFFICIENCY".toLowerCase().toLowerCase(),new Priceable(500,100));
-        map.put("FEATHER_FALLING".toLowerCase(),new Priceable(500,100));
-        map.put("FIRE_ASPECT".toLowerCase(),new Priceable(500,100));
-        map.put("FIRE_PROTECTION".toLowerCase(),new Priceable(500,100));
-        map.put("FLAME".toLowerCase(),new Priceable(500,100));
-        map.put("FORTUNE".toLowerCase(),new Priceable(500,100));
-        map.put("FROST_WALKER".toLowerCase(),new Priceable(500,100));
-        map.put("IMPALING".toLowerCase(),new Priceable(500,100));
-        map.put("INFINITY".toLowerCase(),new Priceable(500,100));
-        map.put("KNOCKBACK".toLowerCase(),new Priceable(500,100));
-        map.put("LOOTING".toLowerCase(),new Priceable(500,100));
-        map.put("LOYALTY".toLowerCase(),new Priceable(500,100));
-        map.put("LUCK_OF_THE_SEA".toLowerCase(),new Priceable(500,100));
-        map.put("LURE".toLowerCase(),new Priceable(500,100));
-        map.put("MENDING".toLowerCase(),new Priceable(500,100));
-        map.put("MULTISHOT".toLowerCase(),new Priceable(500,100));
-        map.put("POWER".toLowerCase(),new Priceable(500,100));
-        map.put("PROJECTILE_PROTECTION".toLowerCase(),new Priceable(500,100));
-        map.put("PROTECTION".toLowerCase(),new Priceable(500,100));
-        map.put("PUNCH".toLowerCase(),new Priceable(500,100));
-        map.put("QUICK_CHARGE".toLowerCase(),new Priceable(500,100));
-        map.put("RESPIRATION".toLowerCase(),new Priceable(500,100));
-        map.put("RIPTIDE".toLowerCase(),new Priceable(500,100));
-        map.put("SHARPNESS".toLowerCase(),new Priceable(500,100));
-        map.put("SILK_TOUCH".toLowerCase(),new Priceable(500,100));
-        map.put("SMITE".toLowerCase(),new Priceable(500,100));
-        map.put("SOUL_SPEED".toLowerCase(),new Priceable(500,100));
-        map.put("SWEEPING_EDGE".toLowerCase(),new Priceable(500,100));
-        map.put("SWIFT_SNEAK".toLowerCase(),new Priceable(500,100));
-        map.put("THORNS".toLowerCase(),new Priceable(500,100));
-        map.put("UNBREAKING".toLowerCase(),new Priceable(500,100));
-        map.put("WIND_BURST".toLowerCase(),new Priceable(500,100));
-        map.put("blast_protection".toLowerCase(),new Priceable(500,100));
+    public static void setProvider(Map<String, Priceable> priceableMap) {
+        prices = priceableMap;
     }
-    public static Priceable getPriceFor(String name){
-        return map.getOrDefault(name, empty);
+
+    public static Priceable getPriceFor(String name) {
+        return prices.getOrDefault(name, empty);
+    }
+
+    public static void add(String key, Priceable priceable) {
+        prices.put(key, priceable);
     }
 
     public static Map<String, ? extends Priceable> getPriceables() {
-        return map;
+        return prices;
     }
 
-    public static void setProvider(Map<String,Priceable> priceableMap){
-        //todo refactor поменять на разные типы провайдеров(разные классы)
-        map = priceableMap;
+    static {
+        prices.put("snout_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("BOLT_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("COAST_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("DUNE_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("EYE_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("FLOW_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("HOST_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("RAISER_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("RIB_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("SENTRY_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("SHAPER_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("SILENCE_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("SPIRE_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("TIDE_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("VEX_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("WARD_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("WAYFINDER_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+        prices.put("WILD_armor_trim_smithing_template".toLowerCase(), new Priceable(500, 500));
+
+        prices.put("BREACH".toLowerCase(), new Priceable(500, 100));
+        prices.put("CHANNELING".toLowerCase(), new Priceable(500, 100));
+        prices.put("DENSITY".toLowerCase(), new Priceable(500, 100));
+        prices.put("DEPTH_STRIDER".toLowerCase(), new Priceable(500, 100));
+        prices.put("EFFICIENCY".toLowerCase().toLowerCase(), new Priceable(500, 100));
+        prices.put("FEATHER_FALLING".toLowerCase(), new Priceable(500, 100));
+        prices.put("FIRE_ASPECT".toLowerCase(), new Priceable(500, 100));
+        prices.put("FIRE_PROTECTION".toLowerCase(), new Priceable(500, 100));
+        prices.put("FLAME".toLowerCase(), new Priceable(500, 100));
+        prices.put("FORTUNE".toLowerCase(), new Priceable(500, 100));
+        prices.put("FROST_WALKER".toLowerCase(), new Priceable(500, 100));
+        prices.put("IMPALING".toLowerCase(), new Priceable(500, 100));
+        prices.put("INFINITY".toLowerCase(), new Priceable(500, 100));
+        prices.put("KNOCKBACK".toLowerCase(), new Priceable(500, 100));
+        prices.put("LOOTING".toLowerCase(), new Priceable(500, 100));
+        prices.put("LOYALTY".toLowerCase(), new Priceable(500, 100));
+        prices.put("LUCK_OF_THE_SEA".toLowerCase(), new Priceable(500, 100));
+        prices.put("LURE".toLowerCase(), new Priceable(500, 100));
+        prices.put("MENDING".toLowerCase(), new Priceable(500, 100));
+        prices.put("MULTISHOT".toLowerCase(), new Priceable(500, 100));
+        prices.put("POWER".toLowerCase(), new Priceable(500, 100));
+        prices.put("PROJECTILE_PROTECTION".toLowerCase(), new Priceable(500, 100));
+        prices.put("PROTECTION".toLowerCase(), new Priceable(500, 100));
+        prices.put("PUNCH".toLowerCase(), new Priceable(500, 100));
+        prices.put("QUICK_CHARGE".toLowerCase(), new Priceable(500, 100));
+        prices.put("RESPIRATION".toLowerCase(), new Priceable(500, 100));
+        prices.put("RIPTIDE".toLowerCase(), new Priceable(500, 100));
+        prices.put("SHARPNESS".toLowerCase(), new Priceable(500, 100));
+        prices.put("SILK_TOUCH".toLowerCase(), new Priceable(500, 100));
+        prices.put("SMITE".toLowerCase(), new Priceable(500, 100));
+        prices.put("SOUL_SPEED".toLowerCase(), new Priceable(500, 100));
+        prices.put("SWEEPING_EDGE".toLowerCase(), new Priceable(500, 100));
+        prices.put("SWIFT_SNEAK".toLowerCase(), new Priceable(500, 100));
+        prices.put("THORNS".toLowerCase(), new Priceable(500, 100));
+        prices.put("UNBREAKING".toLowerCase(), new Priceable(500, 100));
+        prices.put("WIND_BURST".toLowerCase(), new Priceable(500, 100));
+        prices.put("blast_protection".toLowerCase(), new Priceable(500, 100));
     }
 }
